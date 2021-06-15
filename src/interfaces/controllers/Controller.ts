@@ -5,5 +5,5 @@ export type ControllerRequest = {
 }
 
 export default interface Controller<T> {
-    get(request: ControllerRequest): T[]
+    get(request: ControllerRequest): Promise<T[]>
 }

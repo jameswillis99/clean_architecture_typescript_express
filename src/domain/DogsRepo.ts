@@ -1,5 +1,6 @@
-import Dogs from "./Dogs";
+import Dogs from "./DogsModel";
 
 export interface DogsRepo {
-    getDogs(): Dogs[];
+    postDogs(dogs: Dogs[]): Promise<void>;
+    getDogs(): Promise<Dogs[]>;
 }

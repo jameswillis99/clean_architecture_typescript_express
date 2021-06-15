@@ -1,9 +1,9 @@
 import { container } from "tsyringe";
-import DogsRepoSample from "../repo/DogsRepoSample";
+import DogsRepo from "../repo/DogsRepo";
 
  const RepoInjection = ( )=> {
-    container.register("DogsRepo", {
-        useClass: DogsRepoSample
+    container.register("dogs.repo", {
+        useClass: DogsRepo
       });
 }
 

@@ -1,7 +1,5 @@
 import express, { Express } from 'express';
-import { container } from 'tsyringe';
-import Dogs from '../../interfaces/routes/Dogs';
-import DogsRepoSample from '../repo/DogsRepoSample';
+import Dogs from '../../interfaces/routes/DogsRoute';
 
 
 export default class ExpressServer {
@@ -23,21 +21,19 @@ export default class ExpressServer {
 
 
     private startupServer(): Express {
-
-
-
         const app = express();
 
         app.get('/', (req, res) => {
-            res.send('Hello World!')
+            res.send('Hello Worldddd!')
         })
+        
         app.use('/dogs', Dogs);
         return app;
     }
 
     public listen(): void {
         this.app.listen(9000, () => {
-            console.log('Startup complete.')
+            console.log('Startup cofffmplete.')
         });
     }
 }
