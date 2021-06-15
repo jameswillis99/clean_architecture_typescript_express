@@ -1,0 +1,4 @@
+node_modules/
+data/line.sqlite
+dist/*
+.DS_Store
