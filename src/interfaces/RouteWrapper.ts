@@ -1,29 +1,52 @@
 import { Request, Response } from "express";
-import { ControllerRequest } from "./controllers/Controller";
+import Controller, { ControllerRequest } from "./controllers/Controller";
 import  {Exception,  StatusCode } from './exception/Exception'
 
-function RouteWrapper(controller:Function) {
+/**
+ * Decorator pattern
+ */
+class RouteWrapper extends Controller<unknown>{
 
-    return async function(req:Request,res:Response) {
-        const {body, params,query} = req;
-        const request: ControllerRequest = {body, params, query};
+    public request:ControllerRequest;
+
+    constructor(private req: Request, private res: Response, protected Controller: Controller<unknown>) {
+        super();
+        const {body, params,query} = this.req;
+        this.request = {body, params, query};
+    }
+
+    async get(): Promise<void> {
+        await this.call(this.Controller.get)
+    }
+
+    async post(): Promise<void> {
+        await this.call(this.Controller.post)
+    }
+
+    private async call(controller: (x: ControllerRequest)=> Promise<void>) {
         try{
-            res.send(await controller(request))
+
+            await controller(this.request);
+            // await this.Controller.get(this.request);
+            
+            this.res.send(this.Controller.data)
 
         } catch(err) {
-            console.log(err instanceof Exception)
             if (err) {
                 console.log(err)
                 const {statusCode }: Exception = err
-                res.status(statusCode).json(err.message)
+                this.res.status(statusCode).json(err.message)
             } else {
 
-                res.status(500).json(err.message)
+                this.res.status(500).json(err.message)
             }
         }
+    
+    
     }
 
-
 }
+
+
 
 export default RouteWrapper;
