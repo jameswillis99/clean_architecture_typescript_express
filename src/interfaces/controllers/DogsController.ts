@@ -4,6 +4,8 @@ import PostDogs from "../../application/use_cases/PostDogs";
 import DogsModel from "../../domain/DogsModel";
 import Controller, { ControllerRequest } from "./Controller";
 
+
+
 export default class DogsController implements Controller<DogsModel> {
 
     public async get(_body:ControllerRequest) {

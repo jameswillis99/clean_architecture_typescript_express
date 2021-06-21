@@ -5,12 +5,9 @@ import  {Exception,  StatusCode } from './exception/Exception'
 function RouteWrapper(controller:Function) {
 
     return async function(req:Request,res:Response) {
-console.log(req)
         const {body, params,query} = req;
         const request: ControllerRequest = {body, params, query};
         try{
-            //throw new Exception(StatusCode.NotFound, 'not found fella')
-            console.log(body)
             res.send(await controller(request))
 
         } catch(err) {
