@@ -6,7 +6,6 @@ import { Dog } from "./sqlite/entity/DogEntity";
 
 export default class DogsRepoSample implements DogsRepo {
 
-
     constructor(){
     }
     
@@ -16,6 +15,6 @@ export default class DogsRepoSample implements DogsRepo {
     }
     async postDogs(dogs: DogsModel[]){
         const connection = getConnection();
-        await connection.createQueryBuilder().insert().into(Dog).values(dogs);
+        await connection.createQueryBuilder().insert().into(Dog).values(dogs).execute();
     }
 }

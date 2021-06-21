@@ -25,11 +25,8 @@ class RouteWrapper extends Controller<unknown>{
 
     private async call(controller: (x: ControllerRequest)=> Promise<void>) {
         try{
-
             await controller(this.request);
-            // await this.Controller.get(this.request);
-            
-            this.res.send(this.Controller.data)
+            this.res.send(this.Controller.data);
 
         } catch(err) {
             if (err) {
@@ -37,7 +34,6 @@ class RouteWrapper extends Controller<unknown>{
                 const {statusCode }: Exception = err
                 this.res.status(statusCode).json(err.message)
             } else {
-
                 this.res.status(500).json(err.message)
             }
         }

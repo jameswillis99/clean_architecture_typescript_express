@@ -13,6 +13,7 @@
     "@types/chai": "^4.2.18",
     "@types/mocha": "^8.2.2",
     "@types/sinon": "^10.0.2",
+    "body-parser": "^1.19.0",
     "chai": "^4.3.4",
     "express": "^4.17.1",
     "fs": "0.0.1-security",

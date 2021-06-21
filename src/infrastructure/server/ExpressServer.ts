@@ -1,3 +1,4 @@
+import bodyParser from 'body-parser';
 import express, { Express } from 'express';
 import Dogs from '../../interfaces/routes/DogsRoute';
 
@@ -22,6 +23,7 @@ export default class ExpressServer {
 
     private startupServer(): Express {
         const app = express();
+        app.use(bodyParser.json());
 
         app.get('/', (req, res) => {
             res.send('Hello Worldddd!')

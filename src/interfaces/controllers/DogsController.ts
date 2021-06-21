@@ -13,12 +13,12 @@ export default class DogsController extends Controller<DogsModel> {
         super();
     }
     
-    public async get(_body:ControllerRequest) {
+    public get = async(_body:ControllerRequest) => {
         this.data =  await container.resolve(GetDogs).execute().then((getDogs) => getDogs.dogs)
     } 
 
-    public async post(req:ControllerRequest) {
-        const body = [...req.body]
+    public post = async (req:ControllerRequest) => {
+        const {body} = req;
         await container.resolve(PostDogs).setDogs(body).execute();
     }
     

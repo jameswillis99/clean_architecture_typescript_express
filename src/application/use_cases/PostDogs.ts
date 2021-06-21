@@ -9,12 +9,13 @@ export default class PostDogs {
 
     constructor(@inject('dogs.repo') private repo: DogsRepo){ }
 
-    setDogs(dogs: Dogs[]){
+    setDogs = (dogs: Dogs[]) => {
         this.dogs = dogs;
+        console.log('dogs postdogs', dogs)
         return this;
     }
 
-    async execute() {
+    execute = async () => {
         if (this.dogs === undefined ) {
             throw new Error('Dogs are undefined')
         }
