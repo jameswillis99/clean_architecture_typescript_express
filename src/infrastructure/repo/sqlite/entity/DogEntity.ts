@@ -1,14 +1,13 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
-export class Dog {
+export default class Dog {
+  @PrimaryColumn()
+  id!: number;
 
-    @PrimaryColumn()
-    id!: number;
+  @Column()
+  name!: string;
 
-    @Column()
-    name!: string;
-
-    @Column()
-    age!: number;
+  @Column()
+  age!: number;
 }

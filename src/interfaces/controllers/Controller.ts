@@ -1,26 +1,18 @@
-import { Timestamp } from "typeorm";
-
 export type ControllerRequest = {
-    body: any,
-    params: any,
-    query: any
-}
+  body: any,
+  params: any,
+  query: any
+};
 
 export interface IController {
-    get(request: ControllerRequest): Promise<void>
-    post(request: ControllerRequest): Promise<void>
+  get(request: ControllerRequest): Promise<void>
+  post(request: ControllerRequest): Promise<void>
 }
 
-export default class Controller<T> implements IController {
+export default abstract class Controller<T> implements IController {
+  public data: T[] = [];
 
-    public data: T[] = []
+  abstract get(_request: ControllerRequest): Promise<void>;
 
-    get(_request: ControllerRequest): Promise<void> {
-        throw new Error("Method not implemented.");
-    }
-
-    post(req:ControllerRequest): Promise<void> {
-        throw new Error("Method not implemented.");
-    }
-
+  abstract post(req:ControllerRequest): Promise<void>;
 }

@@ -1,0 +1,69 @@
+{
+    "env": {
+        "es2021": true,
+        "node": true
+    },
+    "extends": [
+        "airbnb-typescript/base",
+        "plugin:boundaries/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "project" : "./tsconfig.json"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "boundaries"
+    ],
+    "rules": {
+
+        "boundaries/element-types": [2, {
+            "default": "disallow",
+            "rules": [
+            {
+                "from": "infrastructure",
+                "allow": ["infrastructure","interfaces","domain","application"]
+            },
+            {
+                "from": "interfaces",
+                "allow": ["interfaces","domain","application"]
+            },
+            {
+                "from": "application",
+                "allow": ["application","domain"]
+            },
+            {
+                "from": "domain",
+                "allow": ["domain"]
+            }
+            ]
+        }]
+    },
+    "settings" :{
+
+        "boundaries/ignore": ["test/**/*.spec.ts"],
+    "boundaries/elements": [
+        {
+          "type": "application",
+          "pattern": "src/application/**/*.ts",
+          "mode": "file",
+          "capture": ["category", "elementName"]
+        },
+        {
+          "type": "domain",
+          "pattern": "src/domain/**/*.ts",
+          "capture": ["category", "elementName"]
+        },
+        {
+          "type": "infrastructure",
+          "pattern": "src/infrastructure/**/*.ts",
+          "capture": ["category","elementName"]
+        },
+        {
+          "type": "interfaces",
+          "pattern": "src/interfaces/**/*.ts",
+          "capture": ["category","elementName"]
+        }
+      ]
+    }
+}
