@@ -10,7 +10,6 @@ export default class PostDogs {
 
   setDogs = (dogs: Dogs[]) => {
     this.dogs = dogs;
-    console.log('dogs postdogs', dogs);
     return this;
   };
 

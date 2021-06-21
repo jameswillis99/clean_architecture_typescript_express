@@ -9,61 +9,92 @@
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
-        "project" : "./tsconfig.json"
+        "project": "./tsconfig.json"
     },
     "plugins": [
         "@typescript-eslint",
         "boundaries"
     ],
     "rules": {
-
-        "boundaries/element-types": [2, {
-            "default": "disallow",
-            "rules": [
+        "boundaries/element-types": [
+            2,
             {
-                "from": "infrastructure",
-                "allow": ["infrastructure","interfaces","domain","application"]
-            },
-            {
-                "from": "interfaces",
-                "allow": ["interfaces","domain","application"]
-            },
-            {
-                "from": "application",
-                "allow": ["application","domain"]
-            },
-            {
-                "from": "domain",
-                "allow": ["domain"]
+                "default": "disallow",
+                "rules": [
+                    {
+                        "from": "infrastructure",
+                        "allow": [
+                            "infrastructure",
+                            "interfaces",
+                            "domain",
+                            "application"
+                        ]
+                    },
+                    {
+                        "from": "interfaces",
+                        "allow": [
+                            "interfaces",
+                            "domain",
+                            "application"
+                        ]
+                    },
+                    {
+                        "from": "application",
+                        "allow": [
+                            "application",
+                            "domain"
+                        ]
+                    },
+                    {
+                        "from": "domain",
+                        "allow": [
+                            "domain"
+                        ]
+                    }
+                ]
             }
-            ]
-        }]
+        ]
     },
-    "settings" :{
-
-        "boundaries/ignore": ["test/**/*.spec.ts"],
-    "boundaries/elements": [
+    "overrides": [
         {
-          "type": "application",
-          "pattern": "src/application/**/*.ts",
-          "mode": "file",
-          "capture": ["category", "elementName"]
+          "files": ["test/**/*.spec.ts"],
+          "rules": {
+            "no-unused-expressions": "off",
+            "@typescript-eslint/no-unused-expressions": "off"
+          }
         },
         {
-          "type": "domain",
-          "pattern": "src/domain/**/*.ts",
-          "capture": ["category", "elementName"]
-        },
-        {
-          "type": "infrastructure",
-          "pattern": "src/infrastructure/**/*.ts",
-          "capture": ["category","elementName"]
-        },
-        {
-          "type": "interfaces",
-          "pattern": "src/interfaces/**/*.ts",
-          "capture": ["category","elementName"]
+          "files": ["src/infrastructure/server/ExpressServer.ts"],
+          "rules": {
+            "no-console": "off"
+          }
         }
-      ]
+    ],
+    "settings": {
+        "boundaries/ignore": [
+            "test/**/*.spec.ts"
+        ],
+        "boundaries/elements": [
+            {
+                "type": "application",
+                "pattern": "application/*",
+                "mode": "folder"
+            },
+            {
+                "type": "domain",
+                "pattern": "domain/*",
+                "mode": "folder"
+            },
+            {
+                "type": "infrastructure",
+                "pattern": "infrastructure/*",
+                "mode": "folder"
+            },
+            {
+                "type": "interfaces",
+                "pattern": "interfaces/*",
+                "mode": "folder"
+            }
+        ]
     }
 }
