@@ -1,5 +1,6 @@
 # Clean Architecture Typescript Express
 
+![example workflow](https://github.com/EggyRice/clean_architecture_typescript_express/actions/workflows/main.yml/badge.svg)
 ## Technology 
 
 * Express (Server)
