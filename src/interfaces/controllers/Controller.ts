@@ -1,12 +1,8 @@
-export type ControllerRequest = {
-  body: any,
-  params: any,
-  query: any
-};
+import ControllerRequest from './ControllerRequest';
 
 export interface IController {
-  get(request: ControllerRequest): Promise<void>
-  post(request: ControllerRequest): Promise<void>
+  get(req: ControllerRequest): Promise<void>
+  post(req: ControllerRequest): Promise<void>
 }
 
 /**

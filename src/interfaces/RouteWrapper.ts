@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
-import Controller, { ControllerRequest } from './controllers/Controller';
+import Controller from './controllers/Controller';
+import ControllerRequest from './controllers/ControllerRequest';
 import { Exception } from './exception/Exception';
 
 /**
@@ -13,7 +14,7 @@ class RouteWrapper extends Controller<unknown> {
     protected Cont: Controller<unknown>) {
     super();
     const { body, params, query } = this.req;
-    this.request = { body, params, query };
+    this.request = new ControllerRequest(body, params, query);
   }
 
   async get(): Promise<void> {

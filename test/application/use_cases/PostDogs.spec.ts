@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import chaiAsPromised from 'chai-as-promised';
 import PostDogs from '../../../src/application/use_cases/PostDogs';
 import DogsRepo from '../../../src/infrastructure/repo/DogsRepo';
+import Dogs from '../../../src/domain/DogsEntity';
 
 chai.use(chaiAsPromised);
 
@@ -18,7 +19,7 @@ describe('Insert a new dog', () => {
   });
 
   it('should return mocked database data', async () => {
-    const expected = [{ id: 1, name: 'Clifford', age: 20 }];
+    const expected = [new Dogs('Clifford', 20).setId(1)];
 
     const spy = Sinon.stub(DogsRepo.prototype, 'postDogs').callsFake(async () => {});
     const response = await container.resolve(PostDogs).setDogs(expected).execute();

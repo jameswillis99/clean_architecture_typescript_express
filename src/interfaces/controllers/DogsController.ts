@@ -2,7 +2,8 @@ import { container } from 'tsyringe';
 import GetDogs from '../../application/use_cases/GetDogs';
 import PostDogs from '../../application/use_cases/PostDogs';
 import DogsModel from '../../domain/IDogs';
-import Controller, { ControllerRequest } from './Controller';
+import Controller from './Controller';
+import ControllerRequest from './ControllerRequest';
 
 export default class DogsController extends Controller<DogsModel> {
   public get = async () => {
