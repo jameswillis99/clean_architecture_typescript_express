@@ -30,6 +30,8 @@ The list below is our folder structure and can only communicate upwards (e.g. 2 
 
 When data transfers between a layer, there is one important rule. The function/method that receieves the call from an outer layer should only be transfered the data it needs and should only return the data that is important.
 
+We are using ESLint to limit boundary crossing to the Clean Architecture principles.
+
 
 ### Design Patterns Used
 My main aim of this project was to learn design patterns in real life applications, to enable me to implement them in the real world.  Below is a list of my known design patterns and where I have implemented them.
