@@ -1,7 +1,7 @@
 import { container } from 'tsyringe';
 import GetDogs from '../../application/use_cases/GetDogs';
 import PostDogs from '../../application/use_cases/PostDogs';
-import DogsModel from '../../domain/DogsModel';
+import DogsModel from '../../domain/IDogs';
 import Controller, { ControllerRequest } from './Controller';
 
 export default class DogsController extends Controller<DogsModel> {

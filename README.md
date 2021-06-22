@@ -31,3 +31,12 @@ The list below is our folder structure and can only communicate upwards (e.g. 2 
 When data transfers between a layer, there is one important rule. The function/method that receieves the call from an outer layer should only be transfered the data it needs and should only return the data that is important.
 
 
+### Design Patterns Used
+My main aim of this project was to learn design patterns in real life applications, to enable me to implement them in the real world.  Below is a list of my known design patterns and where I have implemented them.
+
+Pattern     | File Location 
+----------- | ----------- 
+Template    | interfaces/controllers/Controller.ts
+Decorator   | interfaces/RouteWrapper.ts
+Singleton   | infrastructure/server/ExpressServer.ts
+Facade      | infrastructure/repo/DogsRepo.ts

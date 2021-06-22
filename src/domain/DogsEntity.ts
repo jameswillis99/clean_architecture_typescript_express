@@ -1,4 +1,4 @@
-import DogsModel from './DogsModel';
+import DogsModel from './IDogs';
 
 export default class Dogs implements DogsModel {
   id: number | undefined;

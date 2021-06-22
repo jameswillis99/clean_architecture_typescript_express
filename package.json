@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && ts-node dist/app.js",
+    "start": "tsc && ts-node dist/src/app.js",
     "test": "find ./test -name '*.spec.ts' | xargs mocha -r ts-node/register",
     "lint": "npx eslint . --ext .ts"
   },
@@ -17,7 +17,6 @@
     "body-parser": "^1.19.0",
     "chai": "^4.3.4",
     "express": "^4.17.1",
-    "fs": "0.0.1-security",
     "mocha": "^9.0.0",
     "reflect-metadata": "^0.1.13",
     "sinon": "^11.1.1",

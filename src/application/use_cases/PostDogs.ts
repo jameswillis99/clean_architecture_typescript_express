@@ -1,5 +1,5 @@
 import { inject, injectable } from 'tsyringe';
-import Dogs from '../../domain/DogsModel';
+import Dogs from '../../domain/DogsEntity';
 import { DogsRepo } from '../../domain/DogsRepo';
 
 @injectable()
